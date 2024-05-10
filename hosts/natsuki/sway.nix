@@ -59,6 +59,7 @@ in
     wob
     waybar
 		libnotify
+		gnome.file-roller
   ];
 
   services.pipewire = {
@@ -97,10 +98,19 @@ in
   fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "Iosevka" ]; })
 		noto-fonts-monochrome-emoji
+		aegyptus
+		fira
+		fira-code
+		inter
   ];
 
   programs.light.enable = true;
   users.users.hermlon.extraGroups = [ "video" ];
+
+	programs.thunar.enable = true;
+	programs.thunar.plugins = with pkgs.xfce; [
+		thunar-archive-plugin
+	];
 
   programs.fish = {
     enable = true;
@@ -115,7 +125,8 @@ in
     '';
 	};
 	programs.dconf.enable = true;
-	stylix.image = /home/hermlon/pictures/wallpapers/test-pink.png;
+	stylix.image = /home/hermlon/pictures/wallpapers/DSCF2807.png;
+	#stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/eris.yaml";
 	stylix.polarity = "dark";
 	stylix.cursor.name = "Adwaita";
 	stylix.cursor.package = pkgs.gnome3.adwaita-icon-theme;

@@ -2,13 +2,14 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
 			./sway.nix
+			./work.nix
     ];
 
 	nixpkgs.config.allowUnfree = true;
@@ -19,6 +20,8 @@
   boot.loader.efi.canTouchEfiVariables = true;
 	boot.initrd.kernelModules = [ "i915" ];
 
+	boot.tmp.cleanOnBoot = true;
+
   networking.hostName = "natsuki"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -26,6 +29,12 @@
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
+
+	nix.gc = {
+		automatic = true;
+		dates = "weekly";
+		options = "--delete-older-than 30d";
+	};
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -60,6 +69,13 @@
   # sound.enable = true;
   # hardware.pulseaudio.enable = true;
 
+	hardware.bluetooth = {
+		enable = true;
+		powerOnBoot = true;
+	};
+
+	services.blueman.enable = true;
+
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
@@ -68,9 +84,10 @@
     isNormalUser = true;
     initialPassword = "password";
     shell = pkgs.fish;
-    extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "networkmanager" "disk" "dialout" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       git
+			git-lfs
       firefox
       tree
 			neovim
@@ -78,13 +95,11 @@
 			curl
 			wget
 			foot
-			python3
 			thunderbird
 			acpi
 			signal-desktop
 			element-desktop
 			nextcloud-client
-			timetrap
 			vscodium-fhs
 			pamixer
 			pulseaudio
@@ -98,12 +113,97 @@
 			zathura
 			xfce.thunar
 			imagemagick
-    ];
+			downonspot
+			mpv
+			_0x
+			font-manager
+			pavucontrol
+			difftastic
+			gcc
+			cmake
+			gnumake
+			restic
+			rclone
+			wireguard-tools
+			typst
+			elixir
+			inotify-tools
+			unzip
+			imv
+			gimp
+			inkscape
+			lxqt.lxqt-policykit # required for thunar with gvfs
+			picocom
+			screen
+			xournalpp
+			pdfarranger
+			geeqie
+			transmission_4-gtk
+			gnome.seahorse
+			neovide
+			easyeffects
+			iamb
+			nodejs
+			wineWowPackages.waylandFull
+			winetricks
+			wineasio
+			yt-dlp
+			ffmpeg
+			syncplay
+			openssl
+			parted
+			hunspellDicts.de_DE
+			hunspellDicts.en_US
+			ncdu
+			texlive.combined.scheme-full
+			gummi
+			mitmproxy
+			godot_4
+			obsidian
+			jq
+			bluez
+			watson
+			zbar
+			wev
+			python311
+			cotp
+			podman-compose
+    ] ++ 
+		[
+			inputs.dune3d.packages.${pkgs.system}.default
+			inputs.papis.packages.${pkgs.system}.default
+		];
   };
+
+	nixpkgs.config.permittedInsecurePackages = [
+		"electron-25.9.0" # for obsidian
+	];
 
 	services.gnome.gnome-keyring.enable = true;
 	services.getty.extraArgs = [ "--skip-login" ];
 	services.getty.loginOptions = "-p -- hermlon";
+
+	services.gvfs.enable = true;
+
+	programs.git = {
+		enable = true;
+		package = pkgs.gitFull;
+		config.credential.helper = "libsecret";
+	};
+
+	programs.neovim = {
+		enable = true;
+		defaultEditor = true;
+	};
+
+	virtualisation.containers.enable = true;
+	virtualisation.podman = {
+		enable = true;
+		dockerCompat = true;
+		defaultNetwork.settings.dns_enabled = true;
+	};
+
+	boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -128,13 +228,15 @@
   services.logind.extraConfig = ''
     HandlePowerKey=suspend
     HandleLidSwitch=ignore
+    HandleLidSwitchExternalPower=ignore
+    HandleLidSwitchDocked=ignore
   '';
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  networking.firewall.enable = false;
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you

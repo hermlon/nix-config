@@ -15,13 +15,18 @@
 			url = "github:dune3d/dune3d";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
+    papis = {
+			url = "github:hermlon/papis/formatted-strings";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, stylix, ... }: {
+  outputs = { nixpkgs, home-manager, stylix, dune3d, papis, ... }@inputs: {
     nixosConfigurations = {
 
       natsuki = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
+				specialArgs = { inherit inputs; };
         modules = [
           ./hosts/natsuki
 					stylix.nixosModules.stylix
