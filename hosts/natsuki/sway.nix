@@ -60,12 +60,16 @@ in
     waybar
 		libnotify
 		gnome.file-roller
+		pipewire
+		pipewire.jack
+		qpwgraph
   ];
 
   services.pipewire = {
     enable = true;
     alsa.enable = true;
     pulse.enable = true;
+		jack.enable = true;
   };
 
   # xdg-desktop-portal works by exposing a series of D-Bus interfaces
@@ -102,6 +106,7 @@ in
 		fira
 		fira-code
 		inter
+		roboto
   ];
 
   programs.light.enable = true;
@@ -115,16 +120,17 @@ in
   programs.fish = {
     enable = true;
     loginShellInit = ''
-		gnome-keyring-daemon --start > /dev/null
-		for env_var in (gnome-keyring-daemon --start)
-			set -x (echo $env_var | string split "=")
+		if test -n "$XDG_SESSION_TYPE"
+			gnome-keyring-daemon --start > /dev/null
+			for env_var in (gnome-keyring-daemon --start)
+				set -x (echo $env_var | string split "=")
+			end
+			exec sway
 		end
-    if test -n "$XDG_SESSION_TYPE"
-      exec sway
-    end
     '';
 	};
 	programs.dconf.enable = true;
+	stylix.enable = true;
 	stylix.image = /home/hermlon/pictures/wallpapers/DSCF2807.png;
 	#stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/eris.yaml";
 	stylix.polarity = "dark";

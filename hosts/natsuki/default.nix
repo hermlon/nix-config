@@ -10,6 +10,7 @@
       ./hardware-configuration.nix
 			./sway.nix
 			./work.nix
+			./uni.nix
     ];
 
 	nixpkgs.config.allowUnfree = true;
@@ -74,6 +75,10 @@
 		powerOnBoot = true;
 	};
 
+	hardware.sane.enable = true;
+	services.avahi.enable = true;
+	services.avahi.nssmdns4 = true;
+
 	services.blueman.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
@@ -84,7 +89,7 @@
     isNormalUser = true;
     initialPassword = "password";
     shell = pkgs.fish;
-    extraGroups = [ "wheel" "networkmanager" "disk" "dialout" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "networkmanager" "disk" "dialout" "scanner" "lp" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       git
 			git-lfs
@@ -165,9 +170,20 @@
 			watson
 			zbar
 			wev
-			python311
 			cotp
 			podman-compose
+			sage
+			jetbrains.pycharm-community
+			lsof
+			poetry
+			zlib
+			python312
+			gpredict
+			gleam
+			erlang
+			rebar3
+			inetutils
+			gnome.simple-scan
     ] ++ 
 		[
 			inputs.dune3d.packages.${pkgs.system}.default

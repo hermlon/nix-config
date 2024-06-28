@@ -8,7 +8,7 @@
 		kubectl
 		kubernetes-helm
 		kubelogin
-		dbeaver
+		dbeaver-bin
 		socat
 		jetbrains.rider
 		dotnet-sdk_8

@@ -19,7 +19,6 @@
 
 	home.packages = with pkgs; [
 		webcord
-		pdm
 	];
 
 	programs.home-manager.enable = true;
