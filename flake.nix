@@ -19,14 +19,15 @@
 			url = "github:hermlon/papis/formatted-strings";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
+		nixpkgs-zoom.url = "github:nixos/nixpkgs/a3a5586449da81401a9bf67c6fe3084a2f3cdaa0";
   };
 
-  outputs = { nixpkgs, home-manager, stylix, dune3d, papis, ... }@inputs: {
+  outputs = { nixpkgs, home-manager, stylix, dune3d, papis, nixpkgs-zoom, ... }@inputs: {
     nixosConfigurations = {
 
-      natsuki = nixpkgs.lib.nixosSystem {
+      natsuki = nixpkgs.lib.nixosSystem rec {
         system = "x86_64-linux";
-				specialArgs = { inherit inputs; };
+				specialArgs = { inherit inputs; nixpkgs-zoom = import nixpkgs-zoom { inherit system; config.allowUnfree = true; }; };
         modules = [
           ./hosts/natsuki
 					stylix.nixosModules.stylix

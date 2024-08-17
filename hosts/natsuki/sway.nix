@@ -47,7 +47,7 @@ in
     wayland
     xdg-utils # for opening default programs when clicking links
     glib # gsettings
-    gnome3.adwaita-icon-theme  # default gnome cursors
+    adwaita-icon-theme  # default gnome cursors
     swaylock
     swayidle
     grim # screenshot functionality
@@ -59,7 +59,7 @@ in
     wob
     waybar
 		libnotify
-		gnome.file-roller
+		file-roller
 		pipewire
 		pipewire.jack
 		qpwgraph
@@ -135,5 +135,5 @@ in
 	#stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/eris.yaml";
 	stylix.polarity = "dark";
 	stylix.cursor.name = "Adwaita";
-	stylix.cursor.package = pkgs.gnome3.adwaita-icon-theme;
+	stylix.cursor.package = pkgs.adwaita-icon-theme;
 }

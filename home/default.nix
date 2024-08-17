@@ -5,7 +5,7 @@
 	];
 
 	gtk.cursorTheme.name = "Adwaita";
-	gtk.cursorTheme.package = pkgs.gnome3.adwaita-icon-theme;
+	gtk.cursorTheme.package = pkgs.adwaita-icon-theme;
 	gtk.iconTheme.name = "Tela-purple-dark";
 	gtk.iconTheme.package = pkgs.tela-icon-theme;
 

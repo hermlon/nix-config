@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, inputs, ... }:
+{ config, lib, pkgs, inputs, nixpkgs-zoom, ... }:
 
 {
   imports =
@@ -64,7 +64,7 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
-	services.printing.drivers = [	pkgs.mfcl3770cdwcupswrapper ];
+	services.printing.drivers = [	pkgs.mfcl3770cdwcupswrapper pkgs.cups-brother-hl1210w ];
 
   # Enable sound.
   # sound.enable = true;
@@ -79,6 +79,8 @@
 	services.avahi.enable = true;
 	services.avahi.nssmdns4 = true;
 
+	services.resolved.enable = true;
+
 	services.blueman.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
@@ -89,7 +91,7 @@
     isNormalUser = true;
     initialPassword = "password";
     shell = pkgs.fish;
-    extraGroups = [ "wheel" "networkmanager" "disk" "dialout" "scanner" "lp" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "networkmanager" "disk" "dialout" "scanner" "lp" "adbusers" ];
     packages = with pkgs; [
       git
 			git-lfs
@@ -144,7 +146,7 @@
 			pdfarranger
 			geeqie
 			transmission_4-gtk
-			gnome.seahorse
+			seahorse
 			neovide
 			easyeffects
 			iamb
@@ -183,11 +185,13 @@
 			erlang
 			rebar3
 			inetutils
-			gnome.simple-scan
+			simple-scan
+			usbutils
     ] ++ 
 		[
 			inputs.dune3d.packages.${pkgs.system}.default
 			inputs.papis.packages.${pkgs.system}.default
+			nixpkgs-zoom.zoom-us
 		];
   };
 
