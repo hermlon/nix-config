@@ -19,10 +19,14 @@
 			url = "github:hermlon/papis/formatted-strings";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
+		lanzaboote = {
+			url = "github:nix-community/lanzaboote/v0.4.1";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
 		nixpkgs-zoom.url = "github:nixos/nixpkgs/a3a5586449da81401a9bf67c6fe3084a2f3cdaa0";
   };
 
-  outputs = { nixpkgs, home-manager, stylix, dune3d, papis, nixpkgs-zoom, ... }@inputs: {
+  outputs = { nixpkgs, home-manager, lanzaboote, stylix, dune3d, papis, nixpkgs-zoom, ... }@inputs: {
     nixosConfigurations = {
 
       natsuki = nixpkgs.lib.nixosSystem rec {
@@ -31,6 +35,7 @@
         modules = [
           ./hosts/natsuki
 					stylix.nixosModules.stylix
+					lanzaboote.nixosModules.lanzaboote
 
           home-manager.nixosModules.home-manager
           {
