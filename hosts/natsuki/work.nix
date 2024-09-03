@@ -24,6 +24,7 @@
 		openlens
 		yarn
 		android-studio
+		mosquitto
 
 		zoom-us
 	];

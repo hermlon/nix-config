@@ -191,6 +191,9 @@
 			simple-scan
 			usbutils
 			sbctl
+			flutter
+			solvespace
+			prusa-slicer
     ] ++ 
 		[
 			inputs.dune3d.packages.${pkgs.system}.default
