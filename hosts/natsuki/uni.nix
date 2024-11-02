@@ -9,5 +9,7 @@
 
 		remmina
 		virtualbox
+
+		zotero_7
 	];
 }

@@ -3,9 +3,13 @@
 {
 	programs.nix-ld.enable = true;
 
-	programs.java = {
-		enable = true;
-		package = pkgs.jdk17;
+#	programs.java = {
+#		enable = true;
+#		package = pkgs.jdk17;
+#	};
+
+	environment.sessionVariables = {
+		DOTNET_ROOT = "${pkgs.dotnet-sdk_8}";
 	};
 
 	services.udev.packages = [
@@ -13,7 +17,7 @@
   ];
 	users.users.hermlon.extraGroups = ["adbusers"];
 	users.users.hermlon.packages = with pkgs; [
-		azure-cli
+		#azure-cli
 		kubectl
 		kubernetes-helm
 		kubelogin
@@ -21,7 +25,7 @@
 		socat
 		jetbrains.rider
 		dotnet-sdk_8
-		openlens
+		lens
 		yarn
 		android-studio
 		mosquitto

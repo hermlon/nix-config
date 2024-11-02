@@ -37,14 +37,14 @@
 					stylix.nixosModules.stylix
 					lanzaboote.nixosModules.lanzaboote
 
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.hermlon = import ./home;
-            # Optionally, use home-manager.extraSpecialArgs to pass
-            # arguments to home.nix
-          }
+          #home-manager.nixosModules.home-manager
+          #{
+          #  home-manager.useGlobalPkgs = true;
+          #  home-manager.useUserPackages = true;
+          #  home-manager.users.hermlon = import ./home;
+          #  # Optionally, use home-manager.extraSpecialArgs to pass
+          #  # arguments to home.nix
+          #}
         ];
       };
     };

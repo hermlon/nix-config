@@ -177,7 +177,7 @@
 			wev
 			cotp
 			podman-compose
-			sage
+			#sage
 			jetbrains.pycharm-community
 			lsof
 			poetry
@@ -194,6 +194,8 @@
 			flutter
 			solvespace
 			prusa-slicer
+			zip
+			tidal-hifi
     ] ++ 
 		[
 			inputs.dune3d.packages.${pkgs.system}.default

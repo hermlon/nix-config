@@ -102,7 +102,7 @@ in
   fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "Iosevka" ]; })
 		noto-fonts-monochrome-emoji
-		aegyptus
+		#aegyptus
 		fira
 		fira-code
 		inter
@@ -131,8 +131,8 @@ in
 	};
 	programs.dconf.enable = true;
 	stylix.enable = true;
-	stylix.image = /home/hermlon/pictures/wallpapers/DSCF2807.png;
-	#stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/eris.yaml";
+	stylix.image = /home/hermlon/pictures/wallpapers/12ea5288-aa0d-45d6-a4cd-7c8c44cf327b.jpg;
+	stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/tomorrow-night.yaml";
 	stylix.polarity = "dark";
 	stylix.cursor.name = "Adwaita";
 	stylix.cursor.package = pkgs.adwaita-icon-theme;
