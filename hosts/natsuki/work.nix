@@ -32,4 +32,17 @@
 
 		zoom-us
 	];
+
+	nixpkgs.config = {
+    android_sdk.accept_license = true;
+    allowUnfree = true;
+  };
+  environment.systemPackages = with pkgs; [
+    (pkgs.androidenv.emulateApp {
+      name = "android_emulator";
+      platformVersion = "35";
+      abiVersion = "x86_64";
+      systemImageType = "google_apis_playstore";
+    })
+  ];
 }

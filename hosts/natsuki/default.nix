@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, inputs, nixpkgs-zoom, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
 {
   imports =
@@ -79,8 +79,8 @@
 	};
 
 	hardware.sane.enable = true;
-	services.avahi.enable = true;
-	services.avahi.nssmdns4 = true;
+	#services.avahi.enable = true;
+	#services.avahi.nssmdns4 = true;
 
 	services.resolved.enable = true;
 
@@ -150,7 +150,7 @@
 			geeqie
 			transmission_4-gtk
 			seahorse
-			neovide
+			#neovide
 			easyeffects
 			iamb
 			nodejs
@@ -167,7 +167,7 @@
 			ncdu
 			texlive.combined.scheme-full
 			gummi
-			mitmproxy
+			#mitmproxy
 			godot_4
 			obsidian
 			jq
@@ -199,8 +199,6 @@
     ] ++ 
 		[
 			inputs.dune3d.packages.${pkgs.system}.default
-			inputs.papis.packages.${pkgs.system}.default
-			nixpkgs-zoom.zoom-us
 		];
   };
 

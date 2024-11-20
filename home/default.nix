@@ -4,12 +4,12 @@
 	imports = [
 	];
 
-	#gtk.cursorTheme.name = "Adwaita";
-	#gtk.cursorTheme.package = pkgs.adwaita-icon-theme;
-	#gtk.iconTheme.name = "Tela-purple-dark";
-	#gtk.iconTheme.package = pkgs.tela-icon-theme;
+	gtk.cursorTheme.name = "Adwaita";
+	gtk.cursorTheme.package = pkgs.adwaita-icon-theme;
+	gtk.iconTheme.name = "Tela-purple-dark";
+	gtk.iconTheme.package = pkgs.tela-icon-theme;
 
-	#services.mpris-proxy.enable = true;
+	services.mpris-proxy.enable = true;
 
 	home = {
 		username = "hermlon";
@@ -17,9 +17,9 @@
 		stateVersion = "24.11";
 	};
 
-	#home.packages = with pkgs; [
-	#	webcord
-	#];
+	home.packages = with pkgs; [
+		webcord
+	];
 
-	#programs.home-manager.enable = true;
+	programs.home-manager.enable = true;
 }

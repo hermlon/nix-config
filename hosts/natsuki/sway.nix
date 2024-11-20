@@ -130,10 +130,10 @@ in
     '';
 	};
 	programs.dconf.enable = true;
-	stylix.enable = true;
-	stylix.image = /home/hermlon/pictures/wallpapers/12ea5288-aa0d-45d6-a4cd-7c8c44cf327b.jpg;
-	stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/tomorrow-night.yaml";
-	stylix.polarity = "dark";
-	stylix.cursor.name = "Adwaita";
-	stylix.cursor.package = pkgs.adwaita-icon-theme;
+	#stylix.enable = true;
+	#stylix.image = /home/hermlon/pictures/wallpapers/12ea5288-aa0d-45d6-a4cd-7c8c44cf327b.jpg;
+	#stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/tomorrow-night.yaml";
+	#stylix.polarity = "dark";
+	#stylix.cursor.name = "Adwaita";
+	#stylix.cursor.package = pkgs.adwaita-icon-theme;
 }
