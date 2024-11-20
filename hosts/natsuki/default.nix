@@ -159,7 +159,7 @@
 			wineasio
 			yt-dlp
 			ffmpeg
-			syncplay
+			#syncplay
 			openssl
 			parted
 			hunspellDicts.de_DE
