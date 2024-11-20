@@ -29,7 +29,7 @@
 				specialArgs = { inherit inputs; };
         modules = [
           ./hosts/natsuki
-					#stylix.nixosModules.stylix
+					stylix.nixosModules.stylix
 					lanzaboote.nixosModules.lanzaboote
 
           home-manager.nixosModules.home-manager

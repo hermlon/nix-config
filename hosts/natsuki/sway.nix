@@ -130,10 +130,12 @@ in
     '';
 	};
 	programs.dconf.enable = true;
-	#stylix.enable = true;
-	#stylix.image = /home/hermlon/pictures/wallpapers/12ea5288-aa0d-45d6-a4cd-7c8c44cf327b.jpg;
-	#stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/tomorrow-night.yaml";
-	#stylix.polarity = "dark";
-	#stylix.cursor.name = "Adwaita";
-	#stylix.cursor.package = pkgs.adwaita-icon-theme;
+	stylix.enable = true;
+	stylix.image = pkgs.fetchurl {
+    url = "https://yuustan.space/files/a9ce3459-a349-4cb5-8933-bed20b6ddf00";
+    sha256 = "G/rN5Lf/3SS/xMHB72m9IEv6Qd70sp3jO16a0Lff9ic=";
+  };
+	stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/tomorrow-night.yaml";
+	stylix.cursor.name = "Adwaita";
+	stylix.cursor.package = pkgs.adwaita-icon-theme;
 }
