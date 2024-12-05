@@ -17,7 +17,7 @@
   ];
 	users.users.hermlon.extraGroups = ["adbusers"];
 	users.users.hermlon.packages = with pkgs; [
-		#azure-cli
+		azure-cli
 		kubectl
 		kubernetes-helm
 		kubelogin

@@ -81,6 +81,7 @@
 	hardware.sane.enable = true;
 	#services.avahi.enable = true;
 	#services.avahi.nssmdns4 = true;
+	hardware.rtl-sdr.enable = true;
 
 	services.resolved.enable = true;
 
@@ -94,7 +95,7 @@
     isNormalUser = true;
     initialPassword = "password";
     shell = pkgs.fish;
-    extraGroups = [ "wheel" "networkmanager" "disk" "dialout" "scanner" "lp" "adbusers" ];
+    extraGroups = [ "wheel" "networkmanager" "disk" "dialout" "scanner" "lp" "adbusers" "plugdev" ];
     packages = with pkgs; [
       git
 			git-lfs
@@ -185,7 +186,7 @@
 			python312
 			gpredict
 			gleam
-			erlang
+			erlang_27
 			rebar3
 			inetutils
 			simple-scan
@@ -196,6 +197,12 @@
 			prusa-slicer
 			zip
 			tidal-hifi
+			pandoc
+			jetbrains.idea-community-bin
+			rtl-sdr
+			gnuradio
+			gqrx
+			sdrpp
     ] ++ 
 		[
 			inputs.dune3d.packages.${pkgs.system}.default

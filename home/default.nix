@@ -4,7 +4,7 @@
 	imports = [
 	];
 
-	gtk.iconTheme.name = "Tela-purple-dark";
+	gtk.iconTheme.name = "Tela-pink-dark";
 	gtk.iconTheme.package = pkgs.tela-icon-theme;
 
 	services.mpris-proxy.enable = true;

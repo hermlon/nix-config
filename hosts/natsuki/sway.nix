@@ -100,11 +100,11 @@ in
   #};
 
   fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "Iosevka" ]; })
+		nerd-fonts.iosevka
+		nerd-fonts.fira-code
 		noto-fonts-monochrome-emoji
 		#aegyptus
 		fira
-		fira-code
 		inter
 		roboto
   ];
@@ -135,7 +135,7 @@ in
     url = "https://yuustan.space/files/a9ce3459-a349-4cb5-8933-bed20b6ddf00";
     sha256 = "G/rN5Lf/3SS/xMHB72m9IEv6Qd70sp3jO16a0Lff9ic=";
   };
-	stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/tomorrow-night.yaml";
+	stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/horizon-dark.yaml";
 	stylix.cursor.name = "Adwaita";
 	stylix.cursor.package = pkgs.adwaita-icon-theme;
 	stylix.cursor.size = 22;
