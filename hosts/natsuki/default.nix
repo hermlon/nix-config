@@ -160,7 +160,7 @@
 			wineasio
 			yt-dlp
 			ffmpeg
-			#syncplay
+			syncplay
 			openssl
 			parted
 			hunspellDicts.de_DE
@@ -203,6 +203,9 @@
 			gnuradio
 			gqrx
 			sdrpp
+			kdePackages.kdenlive
+			darktable
+			qucs-s
     ] ++ 
 		[
 			inputs.dune3d.packages.${pkgs.system}.default
