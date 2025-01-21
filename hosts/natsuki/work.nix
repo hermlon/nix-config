@@ -29,6 +29,7 @@
 		yarn
 		android-studio
 		mosquitto
+		k6
 
 		zoom-us
 	];

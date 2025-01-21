@@ -208,7 +208,7 @@
 			qucs-s
     ] ++ 
 		[
-			inputs.dune3d.packages.${pkgs.system}.default
+			#inputs.dune3d.packages.${pkgs.system}.default
 		];
   };
 
