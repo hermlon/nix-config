@@ -11,5 +11,6 @@
 		virtualbox
 
 		zotero_7
+		stm32cubemx
 	];
 }

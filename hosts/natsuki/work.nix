@@ -3,10 +3,10 @@
 {
 	programs.nix-ld.enable = true;
 
-#	programs.java = {
-#		enable = true;
-#		package = pkgs.jdk17;
-#	};
+	programs.java = {
+		enable = true;
+		package = pkgs.jdk17;
+	};
 
 	environment.sessionVariables = {
 		DOTNET_ROOT = "${pkgs.dotnet-sdk_8}";
@@ -24,7 +24,7 @@
 		dbeaver-bin
 		socat
 		jetbrains.rider
-		dotnet-sdk_8
+		dotnet-sdk_9
 		lens
 		yarn
 		android-studio

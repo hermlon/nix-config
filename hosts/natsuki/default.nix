@@ -79,8 +79,8 @@
 	};
 
 	hardware.sane.enable = true;
-	#services.avahi.enable = true;
-	#services.avahi.nssmdns4 = true;
+	services.avahi.enable = true;
+	services.avahi.nssmdns4 = true;
 	hardware.rtl-sdr.enable = true;
 
 	services.resolved.enable = true;
@@ -206,6 +206,11 @@
 			kdePackages.kdenlive
 			darktable
 			qucs-s
+			obs-studio
+			ntfs3g
+			kicad
+			blender
+			freecad-wayland
     ] ++ 
 		[
 			#inputs.dune3d.packages.${pkgs.system}.default
@@ -241,6 +246,8 @@
 	};
 
 	boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+
+	boot.supportedFilesystems = [ "ntfs" ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
