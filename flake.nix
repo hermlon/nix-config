@@ -16,17 +16,19 @@
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 		lanzaboote = {
-			url = "github:nix-community/lanzaboote/v0.4.1";
+			url = "github:nix-community/lanzaboote";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
   };
 
   outputs = { nixpkgs, home-manager, lanzaboote, stylix, dune3d, ... }@inputs: {
     nixosConfigurations = {
-
       natsuki = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-				specialArgs = { inherit inputs; };
+				specialArgs = { inherit inputs; pkgs = import nixpkgs {
+					system = "x86_64-linux";
+					config.allowUnfree = true;
+				}; };
         modules = [
           ./hosts/natsuki
 					stylix.nixosModules.stylix

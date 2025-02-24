@@ -13,7 +13,6 @@
 			./uni.nix
     ];
 
-	nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   boot.loader.systemd-boot.enable = lib.mkForce false;
@@ -124,7 +123,6 @@
 			zathura
 			xfce.thunar
 			imagemagick
-			downonspot
 			mpv
 			_0x
 			font-manager
@@ -216,10 +214,6 @@
 			#inputs.dune3d.packages.${pkgs.system}.default
 		];
   };
-
-	nixpkgs.config.permittedInsecurePackages = [
-		"electron-25.9.0" # for obsidian
-	];
 
 	services.gnome.gnome-keyring.enable = true;
 	services.getty.extraArgs = [ "--skip-login" ];
